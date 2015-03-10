@@ -40,14 +40,14 @@ Route::group(array('prefix' => 'productions', 'middleware' => ['auth', 'roles'],
         'uses' => 'ProductionController@update',
     ]);
 });
-
-Route::group(array('prefix' => 'productions'), function () {
-    Route::get('/', [
-        'uses' => 'ProductionController@index',
-    ]);
-    Route::get('/{slug}', 'ProductionController@show');
-
-});
+//
+//Route::group(array('prefix' => 'productions'), function () {
+//    Route::get('/', [
+//        'uses' => 'ProductionController@index',
+//    ]);
+//    Route::get('/{slug}', 'ProductionController@show');
+//
+//});
 
 
 Route::controllers([
