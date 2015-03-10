@@ -30,10 +30,26 @@
                             </div>
                         @endif
 
-                        @foreach($data as $productionType)
-                            {{ $productionType->prodType }} <br/>
-                        @endforeach
-
+                            <table class="table table-striped">
+                                <thead>
+                                <tr>
+                                    <th>Name</th>
+                                    <th>Created</th>
+                                    <th>Updated</th>
+                                    <th># Productions</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                @foreach($data as $productionType)
+                                    <tr>
+                                        <td>{{ $productionType->prodType }}</td>
+                                        <td>{{ $productionType->created_at }}</td>
+                                        <td>{{ $productionType->updated_at }}</td>
+                                        <td>{{ $productionType->production->count() }}</td>
+                                    </tr>
+                                @endforeach
+                                </tbody>
+                            </table>
                     </div>
                 </div>
             </div>
