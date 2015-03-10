@@ -87,13 +87,15 @@ class ProductionController extends Controller
     {
         $data = $request->all();
         $production = Production::where('prodSlug', '=', $data['Slug'])->first();
-        if (strcmp($production->prodName, $data['Name']) !== 0) {
-            $production->prodName = $data['Name'];
-            $production->prodDescription = $data['Description'];
-            $production->prodTypeID = $data['Type'];
+        if (strcmp($production->prodName, $data['Name'])) {
             $production->prodSlug = $this->getSlug($data['Name']);
-            $production->save();
         }
+        $production->prodName = $data['Name'];
+        $production->prodDescription = $data['Description'];
+        $production->prodTypeID = $data['Type'];
+
+        $production->save();
+
         return redirect('productions/' . $production->prodSlug . '/edit')->with('success', 'Production updated successfully!');
     }
 

@@ -62,7 +62,10 @@ class ProductionTypeController extends Controller {
 	 */
 	public function edit($id)
 	{
-		//
+//        $data = ProductionType::find($id)->first();
+        $data = ProductionType::where('id', '=', $id)->first();
+
+        return view('productionType.edit', compact('data'));
 	}
 
 	/**
@@ -71,10 +74,15 @@ class ProductionTypeController extends Controller {
 	 * @param  int  $id
 	 * @return Response
 	 */
-	public function update($id)
+	public function update(ProductionTypeRequest $request)
 	{
-		//
-	}
+        $data = $request->all();
+//        $productionType = ProductionType::find($data['id'])->first();
+        $productionType = ProductionType::where('id', '=', $data['id'])->first();
+        $productionType->prodType = $data['Name'];
+        $productionType->save();
+        return redirect('productionTypes/')->with('success', 'Production type updated successfully!');
+    }
 
 	/**
 	 * Remove the specified resource from storage.

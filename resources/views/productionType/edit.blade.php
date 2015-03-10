@@ -5,7 +5,7 @@
         <div class="row">
             <div class="col-md-10 col-md-offset-1">
                 <div class="panel panel-default">
-                    <div class="panel-heading">Productions</div>
+                    <div class="panel-heading">Edit Production Type</div>
 
                     <div class="panel-body">
 
@@ -30,60 +30,46 @@
                             </div>
                         @endif
 
-                        <form class="form-horizontal" role="form" method="POST" action="/productions/update">
+                        <form class="form-horizontal" role="form" method="POST" action="/productionTypes/update">
                             <input type="hidden" name="_token" value="{{ csrf_token() }}">
 
                             <div class="form-group">
                                 <label class="col-md-4 control-label">Name</label>
-
                                 <div class="col-md-6">
-                                    <input type="text" class="form-control" name="Name"
-                                           value="{{ old('Name', $data['prodName']) }}">
+                                    <input type="text" class="form-control" name="Name" value="{{ old('Name', $data['prodType'])}}">
                                 </div>
                             </div>
 
                             <div class="form-group">
-                                <label class="col-md-4 control-label">Description</label>
-
+                                <label class="col-md-4 control-label">ID</label>
                                 <div class="col-md-6">
-                                    <textarea type="text" class="form-control fluid"
-                                              name="Description">{{ old('Description', $data['prodDescription']) }}</textarea>
+                                    <input type="text" class="form-control" name="id" value="{{ $data['id'] }}" readonly>
                                 </div>
                             </div>
 
                             <div class="form-group">
-                                <label class="col-md-4 control-label">Type</label>
-
+                                <label class="col-md-4 control-label">Updated</label>
                                 <div class="col-md-6">
-                                    <select class="form-control" name="Type">
-                                        @foreach($data2 as $productionType)
-                                            <option value="{{ $productionType->id }}"
-                                            @if ($data['prodTypeID'] == $productionType->id) selected="selected" @endif > {{ $productionType->prodType }}</option>
-                                        @endforeach
-                                    </select>
+                                    <input type="text" class="form-control" name="updated" value="{{ $data['updated_at'] }}" readonly>
                                 </div>
                             </div>
 
                             <div class="form-group">
-                                <label class="col-md-4 control-label">Slug</label>
-
+                                <label class="col-md-4 control-label">Created</label>
                                 <div class="col-md-6">
-                                    <input type="text" class="form-control" name="Slug"
-                                           value="{{ old('Slug', $data['prodSlug']) }}" readonly>
+                                    <input type="text" class="form-control" name="created" value="{{ $data['created_at'] }}" readonly>
                                 </div>
                             </div>
 
                             <div class="form-group">
                                 <div class="col-md-6 col-md-offset-4">
                                     <button type="submit" class="btn btn-primary">
-                                        Edit Production
+                                        Edit Production Type
                                     </button>
-
-                                    {!! HTML::linkAction('ProductionController@destroy', 'Delete Production', $data->prodSlug,
-                                    'class="btn btn-danger"') !!}
                                 </div>
                             </div>
                         </form>
+
                     </div>
                 </div>
             </div>

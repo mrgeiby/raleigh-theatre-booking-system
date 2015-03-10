@@ -22,7 +22,7 @@ class ProductionTypeRequest extends Request {
 	public function rules()
 	{
 		return [
-            'Name' => 'required|min:3|max:255|unique:productionTypes,prodType',
+            'Name' => 'required|min:3|max:255',
         ];
 	}
 

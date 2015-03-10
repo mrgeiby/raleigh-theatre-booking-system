@@ -33,19 +33,23 @@
                             <table class="table table-striped">
                                 <thead>
                                 <tr>
+                                    <th>ID</th>
                                     <th>Name</th>
-                                    <th>Created</th>
-                                    <th>Updated</th>
                                     <th># Productions</th>
+                                    <th>Updated</th>
+                                    <th>Created</th>
+                                    <th>Actions</th>
                                 </tr>
                                 </thead>
                                 <tbody>
                                 @foreach($data as $productionType)
                                     <tr>
+                                        <td>{{ $productionType->id }}</td>
                                         <td>{{ $productionType->prodType }}</td>
-                                        <td>{{ $productionType->created_at }}</td>
-                                        <td>{{ $productionType->updated_at }}</td>
                                         <td>{{ $productionType->production->count() }}</td>
+                                        <td>{{ $productionType->updated_at }}</td>
+                                        <td>{{ $productionType->created_at }}</td>
+                                        <td>{!! HTML::linkAction('ProductionTypeController@edit', 'Edit', $productionType->id, 'class="btn btn-primary"') !!} {!! HTML::linkAction('ProductionTypeController@edit', 'Delete', $productionType->id, 'class="btn btn-danger"') !!}</td>
                                     </tr>
                                 @endforeach
                                 </tbody>
