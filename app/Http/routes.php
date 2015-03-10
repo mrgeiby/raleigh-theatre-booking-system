@@ -23,6 +23,9 @@ Route::group(array('prefix' => 'customer'), function () {
 });
 
 Route::group(array('prefix' => 'productionTypes', 'middleware' => ['auth', 'roles'], 'roles' => ['administrator', 'manager']), function () {
+    Route::get('/', [
+        'uses' => 'ProductionTypeController@index',
+    ]);
     Route::get('/create', [
         'uses' => 'ProductionTypeController@create',
     ]);

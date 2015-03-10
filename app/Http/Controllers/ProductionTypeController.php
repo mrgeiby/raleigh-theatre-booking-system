@@ -15,7 +15,8 @@ class ProductionTypeController extends Controller {
 	 */
 	public function index()
 	{
-
+        $data = ProductionType::all();
+        return view('productionType.index', compact('data'));
 	}
 
 	/**
@@ -39,7 +40,7 @@ class ProductionTypeController extends Controller {
         $productionType = new ProductionType();
         $productionType->prodType = $data['Name'];
         $productionType->save();
-        return redirect('productions/')->with('success', 'Production type created successfully!');
+        return redirect('productionTypes/')->with('success', 'Production type created successfully!');
     }
 
 	/**
