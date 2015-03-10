@@ -22,6 +22,23 @@ Route::group(array('prefix' => 'customer'), function () {
 
 });
 
+Route::group(array('prefix' => 'productionTypes', 'middleware' => ['auth', 'roles'], 'roles' => ['administrator', 'manager']), function () {
+    Route::get('/create', [
+        'uses' => 'ProductionTypeController@create',
+    ]);
+    Route::post('/store', [
+        'uses' => 'ProductionTypeController@store',
+    ]);
+//    Route::get('/{slug}/edit', [
+//        'uses' => 'ProductionController@edit',
+//    ]);
+//    Route::get('/{slug}/destroy', [
+//        'uses' => 'ProductionController@destroy',
+//    ]);
+//    Route::post('/update', [
+//        'uses' => 'ProductionController@update',
+//    ]);
+});
 
 Route::group(array('prefix' => 'productions', 'middleware' => ['auth', 'roles'], 'roles' => ['administrator', 'manager']), function () {
     Route::get('/create', [
@@ -48,7 +65,6 @@ Route::group(array('prefix' => 'productions'), function () {
     Route::get('/{slug}', 'ProductionController@show');
 
 });
-
 
 Route::controllers([
     'auth' => 'Auth\AuthController',

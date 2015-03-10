@@ -4,7 +4,7 @@ use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\ProductionType;
 use Illuminate\Http\Request;
-
+use App\Http\Requests\ProductionTypeRequest;
 
 class ProductionTypeController extends Controller {
 
@@ -25,7 +25,7 @@ class ProductionTypeController extends Controller {
 	 */
 	public function create()
 	{
-		//
+        return view('productionType.create');
 	}
 
 	/**
@@ -33,10 +33,14 @@ class ProductionTypeController extends Controller {
 	 *
 	 * @return Response
 	 */
-	public function store()
+	public function store(ProductionTypeRequest $request)
 	{
-		//
-	}
+        $data = $request->all();
+        $productionType = new ProductionType();
+        $productionType->prodType = $data['Name'];
+        $productionType->save();
+        return redirect('productions/')->with('success', 'Production type created successfully!');
+    }
 
 	/**
 	 * Display the specified resource.
