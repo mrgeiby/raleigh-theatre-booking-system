@@ -50,14 +50,14 @@ Route::group(array('prefix' => 'productions', 'middleware' => ['auth', 'roles'],
     Route::post('/store', [
         'uses' => 'ProductionController@store',
     ]);
+    Route::post('/update', [
+        'uses' => 'ProductionController@update',
+    ]);
     Route::get('/{slug}/edit', [
         'uses' => 'ProductionController@edit',
     ]);
     Route::get('/{slug}/destroy', [
         'uses' => 'ProductionController@destroy',
-    ]);
-    Route::post('/update', [
-        'uses' => 'ProductionController@update',
     ]);
 });
 
