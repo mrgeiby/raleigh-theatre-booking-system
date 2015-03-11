@@ -120,4 +120,12 @@ class ProductionController extends Controller
         return ($slugCount > 0) ? "{$slug}-{$slugCount}" : $slug;
     }
 
+    public function manage()
+    {
+//        $data = ProductionType::paginate(5);
+        $data = Production::paginate(5);
+
+        return view('production.manage', compact('data'));
+    }
+
 }
