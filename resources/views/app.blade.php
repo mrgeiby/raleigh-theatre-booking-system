@@ -54,7 +54,7 @@
                             <li class="divider"></li>
                             @if(Auth::user()->hasRole('Manager'))
                                 <li><a href="/productions/create">Create Production</a></li>
-                                <li><a href="/productionTypes/create">Create Production Type</a></li>
+                                <li><a href="/productionTypes">Manage Production Types</a></li>
                             @endif
 
                             <li><a href="/auth/logout">Logout</a></li>

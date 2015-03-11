@@ -8,7 +8,6 @@
                     <div class="panel-heading">Production Types</div>
 
                     <div class="panel-body">
-
                         @if(Session::has('success'))
                             <div class="alert alert-success">
                                 <button type="button" class="close" data-dismiss="alert"
@@ -31,7 +30,7 @@
                         @endif
                             <div class="text-right">
                                 <a href="{{ URL::action('ProductionTypeController@create') }}" class="btn btn-success">
-                                    <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>Create Production
+                                    <span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Create Production
                                 </a>
                             </div>
                         <table class="table table-striped">
@@ -68,8 +67,6 @@
                                 <div class="col-md-12">
                                     <div class="text-center"> {!! $data->render() !!}</div>
                                 </div>
-
-
                             </div>
                         </div>
 
