@@ -16,7 +16,7 @@ class ProductionTypeController extends Controller {
 	public function index()
 	{
         $data = ProductionType::paginate(5);
-        return view('productionType.index', compact('data'));
+        return view('productiontype.index', compact('data'));
 	}
 
 	/**
@@ -26,7 +26,7 @@ class ProductionTypeController extends Controller {
 	 */
 	public function create()
 	{
-        return view('productionType.create');
+        return view('productiontype.create');
 	}
 
 	/**
@@ -65,7 +65,7 @@ class ProductionTypeController extends Controller {
 //        $data = ProductionType::find($id)->first();
         $data = ProductionType::where('id', '=', $id)->first();
 
-        return view('productionType.edit', compact('data'));
+        return view('productiontype.edit', compact('data'));
 	}
 
 	/**
@@ -77,7 +77,7 @@ class ProductionTypeController extends Controller {
 	public function update(ProductionTypeRequest $request)
 	{
         $data = $request->all();
-//        $productionType = ProductionType::find($data['id'])->first();
+//        $productiontype = ProductionType::find($data['id'])->first();
         $productionType = ProductionType::where('id', '=', $data['id'])->first();
         $productionType->prodType = $data['Name'];
         $productionType->save();
