@@ -59,9 +59,11 @@ Route::group(array('prefix' => 'productions', 'middleware' => ['auth', 'roles'],
     Route::post('/update', [
         'uses' => 'ProductionController@update',
     ]);
-
     Route::get('/{slug}/destroy', [
         'uses' => 'ProductionController@destroy',
+    ]);
+    Route::get('/manage', [
+        'uses' => 'ProductionController@manage',
     ]);
 });
 

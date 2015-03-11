@@ -53,8 +53,8 @@
                             <li><a href="/customer/edit">Update Account Details</a></li>
                             <li class="divider"></li>
                             @if(Auth::user()->hasRole('Manager'))
-                                <li><a href="/productions/create">Create Production</a></li>
                                 <li><a href="/productionTypes">Manage Production Types</a></li>
+                                <li><a href="/productions/manage">Manage Productions</a></li>
                             @endif
 
                             <li><a href="/auth/logout">Logout</a></li>

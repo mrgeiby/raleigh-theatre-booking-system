@@ -14,7 +14,7 @@ class Production extends Model {
 
     public function productionType()
     {
-        return $this->belongsTo('App\ProductionType');
+        return $this->belongsTo('App\ProductionType', 'prodTypeID', 'id');
     }
 
 }

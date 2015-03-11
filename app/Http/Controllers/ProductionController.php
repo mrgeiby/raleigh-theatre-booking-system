@@ -96,7 +96,7 @@ class ProductionController extends Controller
 
         $production->save();
 
-        return redirect('productions/' . $production->prodSlug . '/edit')->with('success', 'Production updated successfully!');
+        return redirect('productions/manage')->with('success', 'Production updated successfully!');
     }
 
     /**
@@ -118,6 +118,14 @@ class ProductionController extends Controller
         $slugCount = count(Production::whereRaw("prodSlug REGEXP '^{$slug}(-[0-9]*)?$'")->get());
 
         return ($slugCount > 0) ? "{$slug}-{$slugCount}" : $slug;
+    }
+
+    public function manage()
+    {
+//        $data = ProductionType::paginate(5);
+        $data = Production::paginate(5);
+
+        return view('production.manage', compact('data'));
     }
 
 }
