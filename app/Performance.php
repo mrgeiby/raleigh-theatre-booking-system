@@ -8,5 +8,9 @@ class Performance extends Model {
 
     protected $fillable = ['perfName', 'perfDate', 'prodID'];
 
+    public function production()
+    {
+        return $this->belongsTo('App\Production', 'prodID', 'id');
+    }
 
 }

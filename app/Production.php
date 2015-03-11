@@ -17,4 +17,9 @@ class Production extends Model {
         return $this->belongsTo('App\ProductionType', 'prodTypeID', 'id');
     }
 
+    public function performance()
+    {
+        return $this->hasMany('App\Performance', 'prodID');
+    }
+
 }
