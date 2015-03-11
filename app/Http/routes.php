@@ -75,6 +75,12 @@ Route::group(array('prefix' => 'productions'), function () {
 
 });
 
+Route::group(array('prefix' => 'performances', 'middleware' => ['auth', 'roles'], 'roles' => ['administrator', 'manager']), function () {
+    Route::get('/', [
+        'uses' => 'PerformanceController@index',
+    ]);
+});
+
 Route::controllers([
     'auth' => 'Auth\AuthController',
     'password' => 'Auth\PasswordController',

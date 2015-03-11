@@ -14,7 +14,8 @@ class PerformanceController extends Controller {
 	 */
 	public function index()
 	{
-
+        $data = Performance::paginate(5);
+        return view('performance.index', compact('data'));
 	}
 
 	/**
