@@ -15,7 +15,7 @@ class ProductionTypeController extends Controller {
 	 */
 	public function index()
 	{
-        $data = ProductionType::all();
+        $data = ProductionType::paginate(5);
         return view('productionType.index', compact('data'));
 	}
 

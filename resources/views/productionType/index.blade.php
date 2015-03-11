@@ -29,31 +29,50 @@
                                 </ul>
                             </div>
                         @endif
-
-                            <table class="table table-striped">
-                                <thead>
+                            <div class="text-right">
+                                <a href="{{ URL::action('ProductionTypeController@create') }}" class="btn btn-success">
+                                    <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>Create Production
+                                </a>
+                            </div>
+                        <table class="table table-striped">
+                            <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Name</th>
+                                <th># Productions</th>
+                                <th>Updated</th>
+                                <th>Created</th>
+                                <th>Actions</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            @foreach($data as $productionType)
                                 <tr>
-                                    <th>ID</th>
-                                    <th>Name</th>
-                                    <th># Productions</th>
-                                    <th>Updated</th>
-                                    <th>Created</th>
-                                    <th>Actions</th>
+                                    <td>{{ $productionType->id }}</td>
+                                    <td>{{ $productionType->prodType }}</td>
+                                    <td>{{ $productionType->production->count() }}</td>
+                                    <td>{{ $productionType->updated_at }}</td>
+                                    <td>{{ $productionType->created_at }}</td>
+                                    <td>{!! HTML::linkAction('ProductionTypeController@edit', 'Edit',
+                                        $productionType->id, 'class="btn btn-primary"') !!}
+                                        {!! HTML::linkAction('ProductionTypeController@edit', 'Delete',
+                                        $productionType->id, 'class="btn btn-danger"') !!}
+                                    </td>
                                 </tr>
-                                </thead>
-                                <tbody>
-                                @foreach($data as $productionType)
-                                    <tr>
-                                        <td>{{ $productionType->id }}</td>
-                                        <td>{{ $productionType->prodType }}</td>
-                                        <td>{{ $productionType->production->count() }}</td>
-                                        <td>{{ $productionType->updated_at }}</td>
-                                        <td>{{ $productionType->created_at }}</td>
-                                        <td>{!! HTML::linkAction('ProductionTypeController@edit', 'Edit', $productionType->id, 'class="btn btn-primary"') !!} {!! HTML::linkAction('ProductionTypeController@edit', 'Delete', $productionType->id, 'class="btn btn-danger"') !!}</td>
-                                    </tr>
-                                @endforeach
-                                </tbody>
-                            </table>
+                            @endforeach
+
+                            </tbody>
+                        </table>
+                        <div class="container-fluid">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="text-center"> {!! $data->render() !!}</div>
+                                </div>
+
+
+                            </div>
+                        </div>
+
                     </div>
                 </div>
             </div>
