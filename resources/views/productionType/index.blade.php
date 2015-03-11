@@ -5,7 +5,7 @@
         <div class="row">
             <div class="col-md-10 col-md-offset-1">
                 <div class="panel panel-default">
-                    <div class="panel-heading">Production Types</div>
+                    <div class="panel-heading">Manage Production Types</div>
 
                     <div class="panel-body">
                         @if(Session::has('success'))
@@ -30,7 +30,7 @@
                         @endif
                             <div class="text-right">
                                 <a href="{{ URL::action('ProductionTypeController@create') }}" class="btn btn-success">
-                                    <span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Create Production
+                                    <span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Create Production Type
                                 </a>
                             </div>
                         <table class="table table-striped">
