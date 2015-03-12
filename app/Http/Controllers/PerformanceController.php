@@ -97,7 +97,9 @@ class PerformanceController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $data = Performance::where('id', '=', $id)->first();
+        $data->delete();
+        return redirect('performances/')->with('success', 'Performance deleted successfully!');
     }
 
 }

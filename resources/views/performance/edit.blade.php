@@ -14,7 +14,7 @@
         <div class="row">
             <div class="col-md-10 col-md-offset-1">
                 <div class="panel panel-default">
-                    <div class="panel-heading">Create Performance</div>
+                    <div class="panel-heading">Edit Performance</div>
 
                     <div class="panel-body">
 
@@ -67,7 +67,6 @@
                                 <label class="col-md-4 control-label">Production</label>
                                 <div class="col-md-6">
                                     <select class="form-control" name="Production">
-                                        <option></option>
                                         @foreach($data2 as $production)
                                             <option value="{{ $production->id }}" @if (old('Production', $data['prodID'] ) == $production->id) selected="selected" @endif >{{ $production->prodName }}</option>
                                         @endforeach

@@ -56,7 +56,7 @@
                                     <td>{{ $performance->created_at }}</td>
                                     <td>{!! HTML::linkAction('PerformanceController@edit', 'Edit',
                                         $performance->id, 'class="btn btn-primary"') !!}
-                                        {!! HTML::linkAction('PerformanceController@edit', 'Delete',
+                                        {!! HTML::linkAction('PerformanceController@destroy', 'Delete',
                                         $performance->id, 'class="btn btn-danger"') !!}
                                     </td>
                                 </tr>

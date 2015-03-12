@@ -85,11 +85,14 @@ Route::group(array('prefix' => 'performances', 'middleware' => ['auth', 'roles']
     Route::post('/store', [
         'uses' => 'PerformanceController@store',
     ]);
-    Route::get('/edit/{id}', [
+    Route::get('/{id}/edit', [
         'uses' => 'PerformanceController@edit'
     ]);
     Route::post('/update', [
         'uses' => 'PerformanceController@update'
+    ]);
+    Route::get('/{id}/destroy', [
+        'uses' => 'PerformanceController@destroy'
     ]);
 });
 
