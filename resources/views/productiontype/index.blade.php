@@ -28,11 +28,11 @@
                                 </ul>
                             </div>
                         @endif
-                            <div class="text-right">
-                                <a href="{{ URL::action('ProductionTypeController@create') }}" class="btn btn-success">
-                                    <span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Create Production Type
-                                </a>
-                            </div>
+                        <div class="text-right">
+                            <a href="{{ URL::action('ProductionTypeController@create') }}" class="btn btn-success">
+                                <span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Create Production Type
+                            </a>
+                        </div>
                         <table class="table table-striped">
                             <thead>
                             <tr>
@@ -54,8 +54,10 @@
                                     <td>{{ $productionType->created_at }}</td>
                                     <td>{!! HTML::linkAction('ProductionTypeController@edit', 'Edit',
                                         $productionType->id, 'class="btn btn-primary"') !!}
-                                        {!! HTML::linkAction('ProductionTypeController@edit', 'Delete',
-                                        $productionType->id, 'class="btn btn-danger"') !!}
+                                        @if ($productionType->production->count() == 0)
+                                            {!! HTML::linkAction('ProductionTypeController@destroy', 'Delete',
+                                            $productionType->id, 'class="btn btn-danger"') !!}
+                                        @endif
                                     </td>
                                 </tr>
                             @endforeach

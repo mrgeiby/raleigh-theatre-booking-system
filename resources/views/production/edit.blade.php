@@ -78,9 +78,6 @@
                                     <button type="submit" class="btn btn-primary">
                                         Edit Production
                                     </button>
-
-                                    {!! HTML::linkAction('ProductionController@destroy', 'Delete Production', $data->prodSlug,
-                                    'class="btn btn-danger"') !!}
                                 </div>
                             </div>
                         </form>

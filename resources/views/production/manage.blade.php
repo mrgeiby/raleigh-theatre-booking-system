@@ -56,8 +56,10 @@
                                     <td>{{ $production->created_at }}</td>
                                     <td>{!! HTML::linkAction('ProductionController@edit', 'Edit',
                                         $production->prodSlug, 'class="btn btn-primary"') !!}
-                                        {!! HTML::linkAction('ProductionController@edit', 'Delete',
-                                        $production->prodSlug, 'class="btn btn-danger"') !!}
+                                        @if ($production->performance->count() == 0)
+                                            {!! HTML::linkAction('ProductionController@destroy', 'Delete',
+                                            $production->prodSlug, 'class="btn btn-danger"') !!}
+                                        @endif
                                     </td>
                                 </tr>
                             @endforeach

@@ -49,7 +49,7 @@ class ProductionController extends Controller
         $production->prodSlug = $this->getSlug($data['Name']);
         $production->prodTypeID = $data['Type'];
         $production->save();
-        return redirect('productions/' . $production->prodSlug)->with('success', 'Production created successfully!');
+        return redirect('productions/manage')->with('success', 'Production created successfully!');
     }
 
     /**
@@ -93,9 +93,7 @@ class ProductionController extends Controller
         $production->prodName = $data['Name'];
         $production->prodDescription = $data['Description'];
         $production->prodTypeID = $data['Type'];
-
         $production->save();
-
         return redirect('productions/manage')->with('success', 'Production updated successfully!');
     }
 
@@ -109,22 +107,19 @@ class ProductionController extends Controller
     {
         $data = Production::where('prodSlug', '=', $slug)->first();
         $data->delete();
-        return redirect('productions/')->with('success', 'Production deleted successfully!');
+        return redirect('productions/manage')->with('success', 'Production deleted successfully!');
     }
 
     public function getSlug($prodName)
     {
         $slug = Str::slug($prodName);
         $slugCount = count(Production::whereRaw("prodSlug REGEXP '^{$slug}(-[0-9]*)?$'")->get());
-
         return ($slugCount > 0) ? "{$slug}-{$slugCount}" : $slug;
     }
 
     public function manage()
     {
-//        $data = ProductionType::paginate(5);
         $data = Production::paginate(5);
-
         return view('production.manage', compact('data'));
     }
 

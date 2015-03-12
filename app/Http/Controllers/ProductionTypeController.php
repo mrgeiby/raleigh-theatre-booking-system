@@ -62,9 +62,7 @@ class ProductionTypeController extends Controller {
 	 */
 	public function edit($id)
 	{
-//        $data = ProductionType::find($id)->first();
         $data = ProductionType::where('id', '=', $id)->first();
-
         return view('productiontype.edit', compact('data'));
 	}
 
@@ -77,7 +75,6 @@ class ProductionTypeController extends Controller {
 	public function update(ProductionTypeRequest $request)
 	{
         $data = $request->all();
-//        $productiontype = ProductionType::find($data['id'])->first();
         $productionType = ProductionType::where('id', '=', $data['id'])->first();
         $productionType->prodType = $data['Name'];
         $productionType->save();
@@ -92,7 +89,9 @@ class ProductionTypeController extends Controller {
 	 */
 	public function destroy($id)
 	{
-		//
+        $data = ProductionType::where('id', '=', $id)->first();
+        $data->delete();
+        return redirect('productionTypes/')->with('success', 'Production type deleted successfully!');
 	}
 
 }

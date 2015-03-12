@@ -32,18 +32,15 @@ Route::group(array('prefix' => 'productionTypes', 'middleware' => ['auth', 'role
     Route::post('/store', [
         'uses' => 'ProductionTypeController@store',
     ]);
-    Route::get('/edit/{id}', [
+    Route::get('/{id}/edit', [
         'uses' => 'ProductionTypeController@edit',
     ]);
     Route::post('/update', [
         'uses' => 'ProductionTypeController@update',
     ]);
-//    Route::get('/{slug}/destroy', [
-//        'uses' => 'ProductionController@destroy',
-//    ]);
-//    Route::post('/update', [
-//        'uses' => 'ProductionController@update',
-//    ]);
+    Route::get('/{id}/destroy', [
+        'uses' => 'ProductionTypeController@destroy',
+    ]);
 });
 
 Route::group(array('prefix' => 'productions', 'middleware' => ['auth', 'roles'], 'roles' => ['administrator', 'manager']), function () {
