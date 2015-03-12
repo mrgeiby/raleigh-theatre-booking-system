@@ -93,6 +93,15 @@ Route::group(array('prefix' => 'performances', 'middleware' => ['auth', 'roles']
     ]);
 });
 
+Route::group(array('prefix' => 'users', 'middleware' => ['auth', 'roles'], 'roles' => ['administrator', 'manager']), function () {
+    Route::get('/', [
+        'uses' => 'UserController@index',
+    ]);
+    Route::get('/create', [
+        'uses' => 'UserController@create',
+    ]);
+});
+
 Route::controllers([
     'auth' => 'Auth\AuthController',
     'password' => 'Auth\PasswordController',
