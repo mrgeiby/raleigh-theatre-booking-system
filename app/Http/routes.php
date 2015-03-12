@@ -105,6 +105,27 @@ Route::group(array('prefix' => 'users', 'middleware' => ['auth', 'roles'], 'role
     ]);
 });
 
+Route::group(array('prefix' => 'roles', 'middleware' => ['auth', 'roles'], 'roles' => ['administrator', 'manager']), function () {
+    Route::get('/', [
+        'uses' => 'RoleController@index',
+    ]);
+    Route::get('/create', [
+        'uses' => 'RoleController@create',
+    ]);
+    Route::post('/store', [
+        'uses' => 'RoleController@store',
+    ]);
+    Route::get('/{id}/edit', [
+        'uses' => 'RoleController@edit'
+    ]);
+    Route::post('/update', [
+        'uses' => 'RoleController@update'
+    ]);
+    Route::get('/{id}/destroy', [
+        'uses' => 'RoleController@destroy'
+    ]);
+});
+
 Route::controllers([
     'auth' => 'Auth\AuthController',
     'password' => 'Auth\PasswordController',
