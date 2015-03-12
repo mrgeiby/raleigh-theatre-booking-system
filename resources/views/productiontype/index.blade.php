@@ -38,7 +38,7 @@
                             <tr>
                                 <th>ID</th>
                                 <th>Name</th>
-                                <th># Productions</th>
+                                <th>Productions</th>
                                 <th>Updated</th>
                                 <th>Created</th>
                                 <th>Actions</th>

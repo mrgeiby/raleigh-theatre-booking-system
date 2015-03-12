@@ -38,6 +38,7 @@
                             <tr>
                                 <th>ID</th>
                                 <th>Name</th>
+                                <th>Performances</th>
                                 <th>Type</th>
                                 <th>Updated</th>
                                 <th>Created</th>
@@ -49,6 +50,7 @@
                                 <tr>
                                     <td>{{ $production->id }}</td>
                                     <td>{{ $production->prodName }}</td>
+                                    <td>{{ $production->performance->count() }}</td>
                                     <td>{{ $production->productionType->prodType }}</td>
                                     <td>{{ $production->updated_at }}</td>
                                     <td>{{ $production->created_at }}</td>
