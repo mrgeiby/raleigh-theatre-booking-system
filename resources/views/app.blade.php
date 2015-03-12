@@ -61,6 +61,7 @@
                             @if(Auth::user()->hasRole('Manager'))
                                 <li><a href="/productionTypes">Manage Production Types</a></li>
                                 <li><a href="/productions/manage">Manage Productions</a></li>
+                                <li><a href="/performances">Manage Performances</a></li>
                             @endif
 
                             <li><a href="/auth/logout">Logout</a></li>
