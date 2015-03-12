@@ -1,5 +1,8 @@
 <?php namespace App\Http\Controllers;
 
+use App\Production;
+use Illuminate\Database\Eloquent;
+
 class HomeController extends Controller {
 
 	/*
@@ -30,7 +33,8 @@ class HomeController extends Controller {
 	 */
 	public function index()
 	{
-		return view('home');
+        $data = Production::orderBy('created_at', 'desc')->first();
+		return view('home', compact('data'));
 	}
 
     public function about()
