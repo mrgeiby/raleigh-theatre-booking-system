@@ -135,6 +135,14 @@ Route::group(array('prefix' => 'roles', 'middleware' => ['auth', 'roles'], 'role
     ]);
 });
 
+Route::group(array('prefix' => 'basket'), function () {
+    Route::get('/', [
+        'uses' => 'BasketController@index',
+    ]);
+//    Route::get('/{slug}', 'ProductionController@show');
+
+});
+
 Route::controllers([
     'auth' => 'Auth\AuthController',
     'password' => 'Auth\PasswordController',
