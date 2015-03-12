@@ -2,8 +2,10 @@
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
+use App\Production;
 use Illuminate\Http\Request;
 use App\Performance;
+use App\Http\Requests\PerformanceRequest;
 
 class PerformanceController extends Controller {
 
@@ -25,7 +27,8 @@ class PerformanceController extends Controller {
 	 */
 	public function create()
 	{
-		//
+        $data = Production::all();
+		return view('performance.create', compact('data'));
 	}
 
 	/**
@@ -33,10 +36,16 @@ class PerformanceController extends Controller {
 	 *
 	 * @return Response
 	 */
-	public function store()
+	public function store(PerformanceRequest $request)
 	{
-		//
-	}
+        $data = $request->all();
+        $performance = new Performance();
+        $performance->perfName = $data['Name'];
+        $performance->perfDate = $data['Date'];
+        $performance->prodID   = $data['Production'];
+        $performance->save();
+        return redirect('performances/')->with('success', 'Performance created successfully!');
+    }
 
 	/**
 	 * Display the specified resource.

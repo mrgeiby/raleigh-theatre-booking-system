@@ -29,7 +29,7 @@
                             </div>
                         @endif
                         <div class="text-right">
-                            <a href="{{ URL::action('ProductionController@create') }}" class="btn btn-success">
+                            <a href="{{ URL::action('PerformanceController@create') }}" class="btn btn-success">
                                 <span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Create Performance
                             </a>
                         </div>
@@ -50,13 +50,14 @@
                                 <tr>
                                     <td>{{ $performance->id }}</td>
                                     <td>{{ $performance->perfName }}</td>
+                                    <td>{{ $performance->perfDate }}</td>
                                     <td>{{ $performance->production->prodName }}</td>
                                     <td>{{ $performance->updated_at }}</td>
                                     <td>{{ $performance->created_at }}</td>
                                     <td>{!! HTML::linkAction('ProductionController@edit', 'Edit',
-                                        $production->prodSlug, 'class="btn btn-primary"') !!}
+                                        $performance->id, 'class="btn btn-primary"') !!}
                                         {!! HTML::linkAction('ProductionController@edit', 'Delete',
-                                        $production->prodSlug, 'class="btn btn-danger"') !!}
+                                        $performance->id, 'class="btn btn-danger"') !!}
                                     </td>
                                 </tr>
                             @endforeach

@@ -79,6 +79,12 @@ Route::group(array('prefix' => 'performances', 'middleware' => ['auth', 'roles']
     Route::get('/', [
         'uses' => 'PerformanceController@index',
     ]);
+    Route::get('/create', [
+        'uses' => 'PerformanceController@create',
+    ]);
+    Route::post('/store', [
+        'uses' => 'PerformanceController@store',
+    ]);
 });
 
 Route::controllers([
