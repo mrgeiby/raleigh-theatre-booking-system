@@ -12,6 +12,8 @@
 */
 
 Route::get('/', 'HomeController@index');
+Route::get('/about', 'HomeController@about');
+Route::get('/schedule', 'HomeController@schedule');
 
 Route::get('home', 'HomeController@index');
 

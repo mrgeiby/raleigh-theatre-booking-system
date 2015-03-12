@@ -43,9 +43,10 @@
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav">
                 <li><a href="/">Home</a></li>
+                <li><a href="/about">About Us</a></li>
+                <li><a href="/schedule">Schedule</a></li>
                 <li><a href="/productions">Productions</a></li>
                 <li><a href="/basket">Basket</a></li>
-
             </ul>
 
             <ul class="nav navbar-nav navbar-right">
@@ -68,12 +69,45 @@
                                 <li><a href="/productions/manage">Manage Productions</a></li>
                                 <li><a href="/performances">Manage Performances</a></li>
                             @endif
-
-                            <li><a href="/auth/logout">Logout</a></li>
+                            <li class="divider"></li>
+                            <li><a href="/auth/logout"><b><div align="center" class="panel panel-default"><h4>LOGOUT</h4></div></b></a></li>
                         </ul>
                     </li>
                 @endif
             </ul>
+            {{--<ul class="nav navbar-nav navbar-right">--}}
+                {{--@if (Auth::guest())--}}
+                    {{--<li><a href="/auth/login">Login</a></li>--}}
+                    {{--<li><a href="/auth/register">Register</a></li>--}}
+                {{--@else--}}
+                    {{--<li class="dropdown">--}}
+                        {{--<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"--}}
+                           {{--aria-expanded="false">{{ Auth::user()->name }} <span class="caret"></span></a>--}}
+                        {{--<ul class="dropdown-menu" role="menu">--}}
+                            {{--<li><b><div align="center" class="panel panel-default">YOUR ACCOUNT</div></b></li>--}}
+                            {{--<li class="divider"></li>--}}
+                            {{--<li><a href="/customer/show">View Account Details</a></li>--}}
+                            {{--<li><a href="/customer/edit">Update Account Details</a></li>--}}
+                            {{--@if(Auth::user()->hasRole('Manager'))--}}
+                                {{--<!-- <li class="divider"></li> -->--}}
+                                {{--<li><b><div align="center" class="panel panel-default">USERS / ROLES</div></b></li>--}}
+                                {{--<!-- <li class="divider"></li> -->--}}
+                                {{--<li><a href="/roles">Manage Roles</a></li>--}}
+                                {{--<li><a href="/users">Manage Users</a></li>--}}
+                                {{--<br />--}}
+                                {{--<!-- <li class="divider"></li> -->--}}
+                                {{--<li><b><div align="center" class="panel panel-default">MANAGE</div></b></li>--}}
+                                {{--<!-- <li class="divider"></li> -->--}}
+                                {{--<li><a href="/productionTypes">Manage Production Types</a></li>--}}
+                                {{--<li><a href="/productions/manage">Manage Productions</a></li>--}}
+                                {{--<li><a href="/performances">Manage Performances</a></li>--}}
+                            {{--@endif--}}
+                            {{--<li class="divider"></li>--}}
+                            {{--<li><a href="/auth/logout"><b><div align="center" class="panel panel-default"><h4>LOGOUT</h4></div></b></a></li>--}}
+                        {{--</ul>--}}
+                    {{--</li>--}}
+                {{--@endif--}}
+            {{--</ul>--}}
         </div>
     </div>
 </nav>
