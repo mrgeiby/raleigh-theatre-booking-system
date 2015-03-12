@@ -5,14 +5,13 @@ use App\Http\Controllers\Controller;
 use App\Customer;
 use App\User;
 use Auth;
-use App\Http\Requests\UpdateCustomerRequest;
+use App\Http\Requests\CustomerRequest;
 use Illuminate\Http\Request;
 use Redirect;
 
 class CustomerController extends Controller
 {
 
-//    protected $customer = Customer::();
     /**
      * Display a listing of the resource.
      *
@@ -73,7 +72,7 @@ class CustomerController extends Controller
      * @param  int $id
      * @return Response
      */
-    public function update(UpdateCustomerRequest $request)
+    public function update(CustomerRequest $request)
     {
         $data = $request->all();
         // Find Customer object in DB and update
@@ -95,9 +94,7 @@ class CustomerController extends Controller
         // Get latest customer data from DB
         $data = Customer::where('userID', '=', Auth::user()->id)->first();
 
-        //return show('customer.edit', compact('data'))->with('success', 'Your account details have been updated successfully!');
         return redirect('customer/show')->with('success', 'Your account details have been updated successfully!');
-//        Redirect::to('customer.edit')->with('success', 'Your account details have been updated successfully!');
     }
 
     /**

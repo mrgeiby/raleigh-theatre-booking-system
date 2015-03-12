@@ -15,7 +15,7 @@ Route::get('/', 'HomeController@index');
 
 Route::get('home', 'HomeController@index');
 
-Route::group(array('prefix' => 'customer'), function () {
+Route::group(array('prefix' => 'customer', 'middleware' => ['auth', 'roles'], 'roles' => ['customer']), function () {
     Route::get('show', 'CustomerController@show');
     Route::get('edit', 'CustomerController@edit');
     Route::post('update', 'CustomerController@update');
