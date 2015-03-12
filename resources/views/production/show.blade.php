@@ -11,7 +11,8 @@
 
                         @if(Session::has('success'))
                             <div class="alert alert-success">
-                                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                                <button type="button" class="close" data-dismiss="alert"
+                                        aria-hidden="true">&times;</button>
                                 <strong>{{ Session::get('success') }}</strong>
                             </div>
                         @endif
@@ -33,6 +34,35 @@
                         <i>Released: {{ $data['created_at'] }}</i>
 
                         <p>{{ $data['prodDescription'] }}</p>
+
+                        <h3>Performances</h3>
+                        @if($data->performance->count() > 0)
+                            <table class="table table-striped">
+                                <thead>
+                                <tr>
+                                    <th>Name</th>
+                                    <th>Date</th>
+                                    <th>Actions</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                @foreach($data->performance as $performance)
+                                    <tr>
+                                        <td>{{ $performance->perfName }}</td>
+                                        <td>{{ $performance->perfDate }}</td>
+                                        <td>
+                                            {{--{!! HTML::linkAction('PerformanceController@edit', 'Edit',--}}
+                                            {{--$performance->id, 'class="btn btn-primary"') !!}--}}
+                                            {{--{!! HTML::linkAction('PerformanceController@destroy', 'Delete',--}}
+                                            {{--$performance->id, 'class="btn btn-danger"') !!}--}}
+                                        </td>
+                                    </tr>
+                                @endforeach
+                                </tbody>
+                            </table>
+                        @else
+                            This production does not have any performances.
+                        @endif
                     </div>
                 </div>
             </div>

@@ -19,7 +19,7 @@ class Production extends Model {
 
     public function performance()
     {
-        return $this->hasMany('App\Performance', 'prodID');
+        return $this->hasMany('App\Performance', 'prodID', 'id');
     }
 
 }
