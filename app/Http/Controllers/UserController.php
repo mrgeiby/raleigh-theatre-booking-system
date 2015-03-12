@@ -2,8 +2,9 @@
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
-
+use App\Role;
 use App\User;
+use App\Http\Requests\UserRequest;
 use Illuminate\Http\Request;
 
 class UserController extends Controller {
@@ -26,7 +27,8 @@ class UserController extends Controller {
 	 */
 	public function create()
 	{
-
+        $data = Role::all()->except(1);
+        return view('user.create', compact('data'));
 	}
 
 	/**
@@ -34,10 +36,18 @@ class UserController extends Controller {
 	 *
 	 * @return Response
 	 */
-	public function store()
+	public function store(UserRequest $request)
 	{
-		//
-	}
+        $data = $request->all();
+        $user = new User();
+        $user->name  = $data['firstName']." ".$data['lastName'];
+        $user->email = $data['email'];
+        $user->password = bcrypt($data['password']);
+        $user->role_id = $data['role'];
+        $user->save();
+        return redirect('users/')->with('success', 'User created successfully!');
+
+    }
 
 	/**
 	 * Display the specified resource.

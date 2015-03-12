@@ -29,7 +29,7 @@
                             </div>
                         @endif
                         <div class="text-right">
-                            <a href="{{ URL::action('PerformanceController@create') }}" class="btn btn-success">
+                            <a href="{{ URL::action('UserController@create') }}" class="btn btn-success">
                                 <span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Create User
                             </a>
                         </div>
@@ -50,11 +50,12 @@
                                     <td>{{ $user->name }}</td>
                                     <td>{{ $user->email }}</td>
                                     <td>{{ $user->role->roleName }}</td>
-                                    {{--<td>{!! HTML::linkAction('UserController@edit', 'Edit',--}}
+                                    <td>
+                                        {{--{!! HTML::linkAction('UserController@edit', 'Edit',--}}
                                         {{--$user->id, 'class="btn btn-primary"') !!}--}}
                                         {{--{!! HTML::linkAction('UserController@destroy', 'Delete',--}}
                                         {{--$user->id, 'class="btn btn-danger"') !!}--}}
-                                    {{--</td>--}}
+                                    </td>
                                 </tr>
                             @endforeach
                             </tbody>

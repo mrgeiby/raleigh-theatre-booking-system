@@ -100,6 +100,9 @@ Route::group(array('prefix' => 'users', 'middleware' => ['auth', 'roles'], 'role
     Route::get('/create', [
         'uses' => 'UserController@create',
     ]);
+    Route::post('/store', [
+        'uses' => 'UserController@store',
+    ]);
 });
 
 Route::controllers([
