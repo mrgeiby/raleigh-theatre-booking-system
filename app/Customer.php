@@ -8,6 +8,10 @@ class Customer extends Model {
 
     protected $fillable = ['firstName', 'lastName', 'address', 'town', 'postCode', 'phoneNumber', 'userID'];
 
+    public function user() {
+        return $this->belongsTo('App\User', 'id');
+    }
+
 
 
 
