@@ -54,9 +54,9 @@
                                     <td>{{ $performance->production->prodName }}</td>
                                     <td>{{ $performance->updated_at }}</td>
                                     <td>{{ $performance->created_at }}</td>
-                                    <td>{!! HTML::linkAction('ProductionController@edit', 'Edit',
+                                    <td>{!! HTML::linkAction('PerformanceController@edit', 'Edit',
                                         $performance->id, 'class="btn btn-primary"') !!}
-                                        {!! HTML::linkAction('ProductionController@edit', 'Delete',
+                                        {!! HTML::linkAction('PerformanceController@edit', 'Delete',
                                         $performance->id, 'class="btn btn-danger"') !!}
                                     </td>
                                 </tr>

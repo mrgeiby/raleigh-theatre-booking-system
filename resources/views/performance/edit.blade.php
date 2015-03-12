@@ -39,20 +39,27 @@
                             </div>
                         @endif
 
-                        <form class="form-horizontal" role="form" method="POST" action="/performances/store">
+                        <form class="form-horizontal" role="form" method="POST" action="/performances/update">
                             <input type="hidden" name="_token" value="{{ csrf_token() }}">
+
+                            <div class="form-group">
+                                <label class="col-md-4 control-label">ID</label>
+                                <div class="col-md-6">
+                                    <input type="text" class="form-control" name="id" value="{{ $data['id'] }}" readonly>
+                                </div>
+                            </div>
 
                             <div class="form-group">
                                 <label class="col-md-4 control-label">Name</label>
                                 <div class="col-md-6">
-                                    <input type="text" class="form-control" name="Name" value="{{ old('Name') }}">
+                                    <input type="text" class="form-control" name="Name" value="{{ old('Name', $data['perfName']) }}">
                                 </div>
                             </div>
 
                             <div class="form-group">
                                 <label class="col-md-4 control-label">Date</label>
                                 <div class="col-md-6">
-                                    <input type="text" class="form-control datepicker" name="Date" value="{{ old('Date') }}">
+                                    <input type="text" class="form-control datepicker" name="Date" value="{{ old('Date', $data['perfDate']) }}">
                                 </div>
                             </div>
 
@@ -61,8 +68,8 @@
                                 <div class="col-md-6">
                                     <select class="form-control" name="Production">
                                         <option></option>
-                                        @foreach($data as $production)
-                                            <option value="{{ $production->id }}" @if (old('Production') == $production->id) selected="selected" @endif >{{ $production->prodName }}</option>
+                                        @foreach($data2 as $production)
+                                            <option value="{{ $production->id }}" @if (old('Production', $data['prodID'] ) == $production->id) selected="selected" @endif >{{ $production->prodName }}</option>
                                         @endforeach
                                     </select>
                                 </div>
@@ -71,7 +78,7 @@
                             <div class="form-group">
                                 <div class="col-md-6 col-md-offset-4">
                                     <button type="submit" class="btn btn-primary">
-                                        Create Performance
+                                        Edit Performance
                                     </button>
                                 </div>
                             </div>

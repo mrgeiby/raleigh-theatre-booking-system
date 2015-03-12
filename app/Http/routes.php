@@ -85,6 +85,12 @@ Route::group(array('prefix' => 'performances', 'middleware' => ['auth', 'roles']
     Route::post('/store', [
         'uses' => 'PerformanceController@store',
     ]);
+    Route::get('/edit/{id}', [
+        'uses' => 'PerformanceController@edit'
+    ]);
+    Route::post('/update', [
+        'uses' => 'PerformanceController@update'
+    ]);
 });
 
 Route::controllers([
