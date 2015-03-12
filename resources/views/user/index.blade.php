@@ -51,10 +51,10 @@
                                     <td>{{ $user->email }}</td>
                                     <td>{{ $user->role->roleName }}</td>
                                     <td>
-                                        {{--{!! HTML::linkAction('UserController@edit', 'Edit',--}}
-                                        {{--$user->id, 'class="btn btn-primary"') !!}--}}
-                                        {{--{!! HTML::linkAction('UserController@destroy', 'Delete',--}}
-                                        {{--$user->id, 'class="btn btn-danger"') !!}--}}
+                                        {!! HTML::linkAction('UserController@edit', 'Edit',
+                                        $user->id, 'class="btn btn-primary"') !!}
+                                        {!! HTML::linkAction('UserController@destroy', 'Delete',
+                                        $user->id, 'class="btn btn-danger"') !!}
                                     </td>
                                 </tr>
                             @endforeach

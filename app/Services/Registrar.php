@@ -39,6 +39,7 @@ class Registrar implements RegistrarContract {
             'name' => $data['firstName'].' '.$data['lastName'],
             'email' => $data['email'],
             'password' => bcrypt($data['password']),
+            'role_id' => 4,
         ]);
 
         $customer = Customer::create([
@@ -49,7 +50,6 @@ class Registrar implements RegistrarContract {
             'postCode' => $data['postCode'],
             'phoneNumber' => $data['phoneNumber'],
             'userID' => $user['id'],
-
         ]);
 
 		return $user;

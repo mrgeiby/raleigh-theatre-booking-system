@@ -24,10 +24,9 @@ class UserRequest extends Request {
 		return [
             'firstName' => 'required|max:255',
             'lastName' => 'required|max:255',
-            'email' => 'required|email|max:255|unique:users',
-            'password' => 'required|confirmed|min:6',
+            'email' => 'sometimes|required|email|max:255',
+            'password' => 'sometimes|confirmed|min:6',
             'role' => 'required'
-
 		];
 	}
 

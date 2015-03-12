@@ -103,6 +103,15 @@ Route::group(array('prefix' => 'users', 'middleware' => ['auth', 'roles'], 'role
     Route::post('/store', [
         'uses' => 'UserController@store',
     ]);
+    Route::get('/{id}/edit', [
+        'uses' => 'UserController@edit',
+    ]);
+    Route::post('/update', [
+        'uses' => 'UserController@update',
+    ]);
+    Route::get('/{id}/destroy', [
+        'uses' => 'UserController@destroy'
+    ]);
 });
 
 Route::group(array('prefix' => 'roles', 'middleware' => ['auth', 'roles'], 'roles' => ['administrator', 'manager']), function () {

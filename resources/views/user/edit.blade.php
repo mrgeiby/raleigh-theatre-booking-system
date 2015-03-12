@@ -34,23 +34,30 @@
                             <input type="hidden" name="_token" value="{{ csrf_token() }}">
 
                             <div class="form-group">
+                                <label class="col-md-4 control-label">ID</label>
+                                <div class="col-md-6">
+                                    <input type="text" class="form-control" name="id" value="{{ $data['id'] }}" readonly>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
                                 <label class="col-md-4 control-label">First Name</label>
                                 <div class="col-md-6">
-                                    <input type="text" class="form-control" name="firstName" value="{{ old('firstName') }}">
+                                    <input type="text" class="form-control" name="firstName" value="{{ old('firstName', $data['firstName']) }}">
                                 </div>
                             </div>
 
                             <div class="form-group">
                                 <label class="col-md-4 control-label">Last Name</label>
                                 <div class="col-md-6">
-                                    <input type="text" class="form-control" name="lastName" value="{{ old('lastName') }}">
+                                    <input type="text" class="form-control" name="lastName" value="{{ old('lastName', $data['lastName']) }}">
                                 </div>
                             </div>
 
                             <div class="form-group">
                                 <label class="col-md-4 control-label">Email</label>
                                 <div class="col-md-6">
-                                    <input type="text" class="form-control" name="email" value="{{ old('email') }}">
+                                    <input type="text" class="form-control" name="email" value="{{ old('email', $data['email']) }}">
                                 </div>
                             </div>
 
@@ -71,9 +78,9 @@
                             <div class="form-group">
                                 <label class="col-md-4 control-label">Role</label>
                                 <div class="col-md-6">
-                                    <select class="form-control" name="Production">
-                                        @foreach($data as $role)
-                                            <option value="{{ $role->id }}" @if (old('Role') == $role->id) selected="selected" @endif >{{ $role->roleName }}</option>
+                                    <select class="form-control" name="role">
+                                        @foreach($data2 as $role)
+                                            <option value="{{ $role->id }}" @if (old('Role', $data['role_id']) == $role->id) selected="selected" @endif >{{ $role->roleName }}</option>
                                         @endforeach
                                     </select>
                                 </div>
