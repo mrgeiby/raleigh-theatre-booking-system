@@ -71,6 +71,9 @@ Route::group(array('prefix' => 'productions'), function () {
         'uses' => 'ProductionController@index',
     ]);
     Route::get('/{slug}', 'ProductionController@show');
+    Route::get('/search/{searchTerm}', [
+        'uses' => 'ProductionController@search',
+    ]);
 
 });
 

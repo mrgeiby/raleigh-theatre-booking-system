@@ -4,6 +4,7 @@ use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\Production;
 use App\ProductionType;
+use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Http\Request;
 use App\Http\Requests\ProductionRequest;
 use Illuminate\Support\Str;
@@ -19,7 +20,7 @@ class ProductionController extends Controller
      */
     public function index()
     {
-        $data = ProductionType::all();
+        $data = ProductionType::paginate(5);
         return view('production.index', compact('data'));
     }
 
@@ -121,6 +122,23 @@ class ProductionController extends Controller
     {
         $data = Production::paginate(5);
         return view('production.manage', compact('data'));
+    }
+
+    public function search($searchTerm)
+    {
+//        $data = Production::where('prodName', '=', $searchTerm);
+        $productionTypes = ProductionType::all();
+        $data = new Collection();
+
+
+        foreach ($productionTypes as $productionType) {
+            foreach ($productionType->production as $production) {
+                if (Str::contains(Str::lower($production->prodName), Str::lower($searchTerm))) {
+                $data->add($production);
+                }
+            }
+        }
+        return view('production.searchResult', compact('data'));
     }
 
 }
