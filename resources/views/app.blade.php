@@ -60,10 +60,13 @@
                         <ul class="dropdown-menu" role="menu">
                             <li><a href="/customer/show">View Account Details</a></li>
                             <li><a href="/customer/edit">Update Account Details</a></li>
-                            @if(Auth::user()->hasRole('Manager'))
+                            @if(Auth::user()->hasRole('Administrator'))
                                 <li class="divider"></li>
                                 <li><a href="/roles">Manage Roles</a></li>
                                 <li><a href="/users">Manage Users</a></li>
+                            @endif
+
+                            @if((Auth::user()->hasRole('Manager')) || (Auth::user()->hasRole('Administrator')) )
                                 <li class="divider"></li>
                                 <li><a href="/productionTypes">Manage Production Types</a></li>
                                 <li><a href="/productions/manage">Manage Productions</a></li>
