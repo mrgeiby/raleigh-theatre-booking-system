@@ -16,7 +16,8 @@
                 <div class="panel panel-default">
                     <div class="panel-heading"><b>Check out our latest performance!</b></div>
                     <div class="panel-body">
-                        <h2>{{ $data['prodName'] }}</h2>
+                        <h2>{!! HTML::linkAction('ProductionController@show', $data['prodName'],
+                            $data['prodSlug']) !!}</h2>
                         <i>Released: {{ $data['created_at'] }}</i>
                         <p>{{ $data['prodDescription'] }}</p>
                     </div>
