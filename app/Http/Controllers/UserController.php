@@ -19,11 +19,11 @@ class UserController extends Controller
     public function index()
     {
         $data = User::paginate(5);
-        foreach($data as $key => $user) {
-            if(!$user->customer) {
-                unset($data[$key]);
-            }
-        }
+//        foreach($data as $key => $user) {
+//            if(!$user->customer) {
+//                unset($data[$key]);
+//            }
+//        }
         return view('user.index', compact('data'));
     }
 
