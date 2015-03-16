@@ -40,9 +40,9 @@
                             <table class="table table-striped">
                                 <thead>
                                 <tr>
-                                    <th>Name</th>
-                                    <th>Date</th>
-                                    <th>Actions</th>
+                                    <th class="col-md-8">Name</th>
+                                    <th class="col-md-2">Date</th>
+                                    <th class="col-md-2">Actions</th>
                                 </tr>
                                 </thead>
                                 <tbody>
@@ -51,10 +51,7 @@
                                         <td>{{ $performance->perfName }}</td>
                                         <td>{{ $performance->perfDate }}</td>
                                         <td>
-                                            {{--{!! HTML::linkAction('PerformanceController@edit', 'Edit',--}}
-                                            {{--$performance->id, 'class="btn btn-primary"') !!}--}}
-                                            {{--{!! HTML::linkAction('PerformanceController@destroy', 'Delete',--}}
-                                            {{--$performance->id, 'class="btn btn-danger"') !!}--}}
+                                            <a href="{!! URL::to('basket/') !!}/{{ $performance->id }}/add" class="btn btn-primary">Add to Basket</a>
                                         </td>
                                     </tr>
                                 @endforeach

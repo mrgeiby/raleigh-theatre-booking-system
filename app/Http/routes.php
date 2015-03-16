@@ -1,5 +1,5 @@
 <?php
-
+use App\Performance;
 /*
 |--------------------------------------------------------------------------
 | Application Routes
@@ -144,7 +144,15 @@ Route::group(array('prefix' => 'basket'), function () {
     Route::get('/', [
         'uses' => 'BasketController@index',
     ]);
-//    Route::get('/{slug}', 'ProductionController@show');
+    Route::get('{id}/add', function($id) {
+        $performance = Performance::find($id);
+        Cart::associate('App\Performance')->add($id,$performance->perfName, 1, 4.99);
+        return redirect('basket/');
+    });
+    Route::get('{id}/remove', function($rowID) {
+        Cart::remove($rowID);
+        return redirect('basket/');
+    });
 
 });
 
