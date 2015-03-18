@@ -32,9 +32,10 @@
                         <table class="table table-striped table-hover table-responsive">
                             <thead>
                             <tr>
-                                <th class="col-md-8 text-left">Performance</th>
+                                <th class="col-md-7 text-left">Performance</th>
                                 <th class="col-md-1 text-center">Quantity</th>
                                 <th class="col-md-1 text-center">Price</th>
+                                <th class="col-md-1 text-center">Subtotal</th>
                                 <th class="col-md-2 text-right"></th>
                             </tr>
                             </thead>
@@ -44,6 +45,7 @@
                                     <td class="text-left">{{ $row->name }}</td>
                                     <td class="text-center">{{ $row->qty }}</td>
                                     <td class="text-center">{{ $row->price }}</td>
+                                    <td class="text-center">{{ $row->subtotal }}</td>
                                     <td class="text-center">
                                         <a href="{!! URL::to('basket/') !!}/{{ $row->rowid }}/remove"
                                            class="btn btn-danger btn-sm"><span class="glyphicon glyphicon-remove"
@@ -56,10 +58,11 @@
                             <tr>
                                 <td class="col-md-1"><a href="{!! URL::to('productions/') !!}" class="btn btn-primary">Continue
                                         Shopping</a></td>
+                                <td></td>
                                 <td class="col-md-2 text-center"><strong>Total Tickets<br/> {{ Cart::count() }}
                                     </strong></td>
                                 <td class="col-md-1 text-center"><strong>Total £{{ Cart::total() }}</strong></td>
-                                <td class="col-md-2"><a href="#" class="btn btn-success btn-block">Checkout</a></td>
+                                <td class="col-md-2"><a href="{!! URL::to('basket/checkout') !!}" class="btn btn-success btn-block">Checkout</a></td>
                             </tr>
                             </tfoot>
                         </table>

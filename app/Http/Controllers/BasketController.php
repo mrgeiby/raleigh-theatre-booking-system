@@ -12,4 +12,10 @@ class BasketController extends Controller
     {
         return view('basket.index');
     }
+
+    public function checkout()
+    {
+        $basket = Session::get('basket');
+        return view('basket.checkout');
+    }
 }

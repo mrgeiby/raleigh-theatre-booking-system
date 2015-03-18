@@ -141,6 +141,12 @@ Route::group(array('prefix' => 'roles', 'middleware' => ['auth', 'roles'], 'role
     ]);
 });
 
+Route::group(array('prefix' => 'basket', 'middleware' => ['auth', 'roles'], 'roles' => ['Customer']), function () {
+    Route::get('/checkout', [
+        'uses' => 'BasketController@checkout',
+    ]);
+});
+
 Route::group(array('prefix' => 'basket'), function () {
     Route::get('/', [
         'uses' => 'BasketController@index',
