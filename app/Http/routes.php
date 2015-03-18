@@ -1,5 +1,6 @@
 <?php
 use App\Performance;
+use Illuminate\Support\Facades\Session;
 /*
 |--------------------------------------------------------------------------
 | Application Routes
@@ -147,10 +148,12 @@ Route::group(array('prefix' => 'basket'), function () {
     Route::get('{id}/add', function($id) {
         $performance = Performance::find($id);
         Cart::associate('App\Performance')->add($id,$performance->perfName, 1, 4.99);
+        Session::put('basket', Cart::content());
         return redirect('basket/');
     });
     Route::get('{id}/remove', function($rowID) {
         Cart::remove($rowID);
+        Session::put('basket', Cart::content());
         return redirect('basket/');
     });
 
