@@ -14,7 +14,7 @@ class SeatsTableSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('seats')->delete();
+        DB::table('seats')->truncate();
         $letters = range('A', 'O');
         foreach ($letters as $letter) {
             for ($x = 1; $x <= 10; $x++) {
@@ -23,7 +23,7 @@ class SeatsTableSeeder extends Seeder
                 } else if(($letter >= 'F') && ($letter <= 'J')) {
                     Seat::create(['seatRow' => $letter, 'seatNumber' => $x, 'seatPrice' => '9.99']);
                 } else if(($letter >= 'K') && ($letter <= 'O')) {
-                    Seat::create(['seatRow' => $letter, 'seatNumber' => $x, 'seatPrice' => '9.99']);
+                    Seat::create(['seatRow' => $letter, 'seatNumber' => $x, 'seatPrice' => '14.99']);
                 }
             }
         }
