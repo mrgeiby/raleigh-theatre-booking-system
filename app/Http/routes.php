@@ -145,6 +145,12 @@ Route::group(array('prefix' => 'basket', 'middleware' => ['auth', 'roles'], 'rol
     Route::get('/checkout', [
         'uses' => 'BasketController@checkout',
     ]);
+    Route::post('/purchase', [
+        'uses' => 'BasketController@purchase',
+    ]);
+    Route::get('/confirm', [
+        'uses' => 'BasketController@confirm',
+    ]);
 });
 
 Route::group(array('prefix' => 'basket'), function () {
@@ -162,7 +168,6 @@ Route::group(array('prefix' => 'basket'), function () {
         Session::put('basket', Cart::content());
         return redirect('basket/');
     });
-
 });
 
 Route::controllers([

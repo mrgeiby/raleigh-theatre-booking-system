@@ -19,11 +19,11 @@ class SeatsTableSeeder extends Seeder
         foreach ($letters as $letter) {
             for ($x = 1; $x <= 10; $x++) {
                 if(($letter >= 'A') && ($letter <= 'E')) {
-                    Seat::create(['seatRow' => $letter, 'seatNumber' => $x, 'seatPrice' => '4.99']);
+                    Seat::create(['seatRow' => $letter, 'seatNumber' => $x]);
                 } else if(($letter >= 'F') && ($letter <= 'J')) {
-                    Seat::create(['seatRow' => $letter, 'seatNumber' => $x, 'seatPrice' => '9.99']);
+                    Seat::create(['seatRow' => $letter, 'seatNumber' => $x]);
                 } else if(($letter >= 'K') && ($letter <= 'O')) {
-                    Seat::create(['seatRow' => $letter, 'seatNumber' => $x, 'seatPrice' => '14.99']);
+                    Seat::create(['seatRow' => $letter, 'seatNumber' => $x]);
                 }
             }
         }
