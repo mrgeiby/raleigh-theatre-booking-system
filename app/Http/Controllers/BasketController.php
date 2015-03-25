@@ -7,6 +7,7 @@ use App\Seat;
 use Illuminate\Http\Request;
 use Gloudemans\Shoppingcart\Cart;
 use Illuminate\Support\Facades\Session;
+use App\Http\Requests\PurchaseRequest;
 
 class BasketController extends Controller
 {
@@ -30,6 +31,22 @@ class BasketController extends Controller
                 }
             }
         }
-        return view('basket.checkout', compact('basket'), compact('seats'), compact('tickets'));
+        return view('basket.checkout', compact('basket'));
+    }
+
+    public function purchase(PurchaseRequest $request) {
+        $data = $request->all();
+
+//        print_r($data);
+        //$basket = Session::get('basket');
+
+//        return view('basket.purchase', compact('basket'));
+        return redirect('basket/confirm');
+    }
+
+    public function confirm() {
+        //print_r($data);
+        $basket = Session::get('basket');
+        return view('basket.confirm', compact('basket'));
     }
 }
