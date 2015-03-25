@@ -5,7 +5,7 @@
         <div class="row">
             <div class="col-md-10 col-md-offset-1">
                 <div class="panel panel-default">
-                    <div class="panel-heading">Checkout - Seat Selection</div>
+                    <div class="panel-heading">Checkout - Confirm</div>
 
                     <div class="panel-body">
 
@@ -29,7 +29,7 @@
                                 </ul>
                             </div>
                         @endif
-                        <form class="form-horizontal" role="form" method="POST" action="{!! URL::to('basket/purchase') !!}">
+                        <form class="form-horizontal" role="form" method="POST" action="{!! URL::to('basket/confirm') !!}">
                             <input type="hidden" name="_token" value="{{ csrf_token() }}">
 
                             <table class="table table-striped table-hover table-responsive">
@@ -38,7 +38,7 @@
                                     <th class="col-md-6 text-left">Performance</th>
                                     <th class="col-md-1 text-center"></th>
                                     <th class="col-md-1 text-center"></th>
-                                    <th class="col-md-4 text-center">Available Seats</th>
+                                    <th class="col-md-4 text-center">Seats</th>
                                 </tr>
                                 </thead>
                                 <tbody>
@@ -50,12 +50,10 @@
                                                 <td class="text-center"></td>
                                                 <td class="text-center"></td>
                                                 <td class="text-center">
-                                                    <select class="form-control" name="Seat">
-                                                        <option></option>
                                                         @foreach($row->options->seats as $seat)
-                                                            <option value="{{ $seat->id }}" @if(old('Seat') == $seat->id) selected="selected" @endif > Row: {{ $seat->seatRow }} Seat: {{ $seat->seatNumber }}</option>
+                                                        Row: {{ $seat->seatRow }} Seat: {{ $seat->seatNumber }}
                                                         @endforeach
-                                                    </select>
+
                                                 </td>
                                             </tr>
                                         @endfor
@@ -65,12 +63,9 @@
                                             <td class="text-center"></td>
                                             <td class="text-center"></td>
                                             <td class="text-center">
-                                                <select class="form-control" name="Seat">
-                                                    <option></option>
-                                                    @foreach($row->options->seats as $seat)
-                                                        <option value="{{ $seat->id }}" @if(old('Seat') == $seat->id) selected="selected" @endif > Row: {{ $seat->seatRow }} Seat: {{ $seat->seatNumber }}</option>
-                                                    @endforeach
-                                                </select>
+                                                @foreach($row->options->seats as $seat)
+                                                    Row: {{ $seat->seatRow }} Seat: {{ $seat->seatNumber }}
+                                                @endforeach
                                             </td>
                                         </tr>
                                     @endif
@@ -83,12 +78,14 @@
                                     <td class="col-md-2 text-center"><strong>Total Tickets<br/>{{ Cart::count() }}</strong></td>
                                     <td class="col-md-1 text-center"><strong>Total £{{ Cart::total() }}</strong></td>
                                     <td class="col-md-3 text-right"><button type="submit" class="btn btn-success">
-                                            Purchase Tickets
+                                            Confirm Purchase
                                         </button></td>
                                 </tr>
                                 </tfoot>
                             </table>
                         </form>
+
+                        {{ $basket }}
 
                     </div>
                 </div>
