@@ -39,7 +39,7 @@
                             </div>
                         @endif
 
-                        <form class="form-horizontal" role="form" method="POST" action="/performances/update">
+                        <form class="form-horizontal" role="form" method="POST" action="{!! URL::to('/performances/update') !!}">
                             <input type="hidden" name="_token" value="{{ csrf_token() }}">
 
                             <div class="form-group">

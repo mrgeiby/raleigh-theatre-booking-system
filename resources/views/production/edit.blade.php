@@ -30,7 +30,7 @@
                             </div>
                         @endif
 
-                        <form class="form-horizontal" role="form" method="POST" action="/productions/update">
+                        <form class="form-horizontal" role="form" method="POST" action="{!! URL::to('/productions/update') !!}">
                             <input type="hidden" name="_token" value="{{ csrf_token() }}">
 
                             <div class="form-group">
